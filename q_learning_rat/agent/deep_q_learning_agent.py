@@ -78,6 +78,12 @@ class DeepQLearningAgent(QTableAgent):
                 k += 1
         return state
 
+    def name(self) -> str:
+        return "Deep Q-Learning Agent"
+
+    def reset(self):
+        self.model = DeepQNetwork(self.view_distance)
+        self.prev_model = self.model.clone()
     
     def interaction(self, initial_state: np.ndarray, result_state: np.ndarray, action: int, interaction: str, terminated: bool = False):
         reward = self.reward(interaction)

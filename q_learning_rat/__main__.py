@@ -7,8 +7,7 @@ from q_learning_rat.view.game import Game
 
 
 if __name__ == "__main__":
-    # agent = QTableAgent()
-    agent = DeepQLearningAgent(view_distance=3)
-    trainer = BasicTrainer(1, agent, view_distance=3)
+    agents = [DeepQLearningAgent(view_distance=3), QTableAgent()]
+    trainer = BasicTrainer(list(range(1, 11)), agents, view_distance=3)
     game = Game(trainer, debug=False)
     game.run()

@@ -27,3 +27,9 @@ class InputAgent(AbstractAgent):
 
     def start(self, level: Level):
         pass
+
+    def name(self) -> str:
+        return "Input Agent"
+
+    def reset(self):
+        pass

@@ -49,6 +49,10 @@ class QTableAgent(AbstractAgent):
         state = self.state(state)
         return np.argmax(np.array([self.__get_q_value(state, action) for action in range(4)]))
 
+    def reset(self):
+        self.q_table = {}
+        self.position_penalty = None
+
     def _get_position_penalty(self, position: Position, increase: bool = False) -> float:
         if position not in self.position_penalty:
             self.position_penalty[position] = self.position_penalty_start
@@ -91,6 +95,9 @@ class QTableAgent(AbstractAgent):
             action, 
             actual_reward - self.learning_rate * (actual_reward - expected_reward)
         )
+
+    def name(self) -> str:
+        return "Q-Table Agent"
 
     def save(self, filename: str):
         with open(filename, 'wb') as f:

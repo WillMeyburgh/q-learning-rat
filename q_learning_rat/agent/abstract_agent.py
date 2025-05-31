@@ -16,5 +16,13 @@ class AbstractAgent(ABC):
         pass
 
     @abstractmethod
+    def reset(self):
+        pass
+
+    @abstractmethod
+    def name(self) -> str:
+        pass
+
+    @abstractmethod
     def start(self, level: Level):
         pass
